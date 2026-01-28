@@ -15,7 +15,7 @@
 
   <style>
     :root {
-      --brand: #b8b8d3;
+      --brand: #d9a0d5;
     }
 
     /* Fade-in animation */
@@ -182,7 +182,7 @@
   });
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-  // Infinite gallery (true loop)
+  // ===== INFINITE GALLERY (FIXED) =====
   const gallery = document.getElementById('gallery');
   const images = [
     'images/clean1.jpg',
@@ -191,41 +191,51 @@
     'images/clean4.jpg'
   ];
 
+  const CARD_WIDTH = 340;
+
+  // build 3 copies
   const track = [...images, ...images, ...images];
 
   track.forEach(src => {
     const img = document.createElement('img');
     img.src = src;
-    img.className = 'gallery-img min-w-[320px] h-64 object-cover rounded shadow-lg cursor-pointer';
+    img.className =
+      'gallery-img min-w-[320px] h-64 object-cover rounded shadow-lg cursor-pointer';
     gallery.appendChild(img);
   });
 
-  let index = images.length;
+  let index = images.length; // start in middle set
 
-  function updatePosition() {
-    gallery.scrollTo({
-      left: index * 340,
-      behavior: 'smooth'
-    });
+  function jumpWithoutAnimation(newIndex) {
+    gallery.style.scrollBehavior = 'auto';
+    index = newIndex;
+    gallery.scrollLeft = index * CARD_WIDTH;
+    gallery.offsetHeight; // force reflow
+    gallery.style.scrollBehavior = 'smooth';
   }
 
   function scrollGallery(dir) {
     index += dir;
+    gallery.scrollTo({
+      left: index * CARD_WIDTH,
+      behavior: 'smooth'
+    });
 
-    if (index >= images.length * 2) {
-      index = images.length;
-      gallery.scrollLeft = index * 340;
-    }
-    if (index < images.length) {
-      index = images.length * 2 - 1;
-      gallery.scrollLeft = index * 340;
-    }
-
-    updatePosition();
+    // after animation completes, silently reset if needed
+    setTimeout(() => {
+      if (index >= images.length * 2) {
+        jumpWithoutAnimation(images.length);
+      }
+      if (index < images.length) {
+        jumpWithoutAnimation(images.length * 2 - 1);
+      }
+    }, 350);
   }
 
   window.onload = () => {
-    gallery.scrollLeft = index * 340;
+    gallery.style.scrollBehavior = 'auto';
+    gallery.scrollLeft = index * CARD_WIDTH;
+    gallery.style.scrollBehavior = 'smooth';
   };
 
   // Lightbox
@@ -239,7 +249,7 @@
     }
   });
 
-  lightbox.onclick = () => lightbox.style.display = 'none';
+  lightbox.onclick = () => (lightbox.style.display = 'none');
 </script>
 
 </body>

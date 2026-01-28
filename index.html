@@ -7,16 +7,18 @@
   <title>WonderWoman Cleaning | Professional House Cleaning in Frenchtown, New Jersey</title>
   <meta name="description" content="WonderWoman Cleaning offers professional house cleaning services in Frenchtown, New Jersey. Reliable, thorough, and detail-oriented." />
 
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="images/hero-cleaning.ico">
+
   <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Brand color -->
+  <!-- Brand + effects -->
   <style>
     :root {
-      --brand: #b8b8d3;
+      --brand: #d9a0d5;
     }
 
-    /* Scroll animations */
     .fade-in {
       opacity: 0;
       transform: translateY(20px);
@@ -27,7 +29,6 @@
       transform: translateY(0);
     }
 
-    /* Lightbox */
     #lightbox {
       display: none;
       position: fixed;
@@ -84,25 +85,25 @@
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
       <div class="bg-white p-6 rounded shadow">
-        <img src="images/residential.jpg" alt="Residential Cleaning" class="w-full h-40 object-cover rounded mb-4">
+        <img src="images/residential.jpg" class="w-full h-40 object-cover rounded mb-4">
         <h3 class="font-semibold text-xl text-[var(--brand)]">Residential</h3>
         <p class="mt-2 text-gray-600">Routine & deep cleaning for homes.</p>
       </div>
 
       <div class="bg-white p-6 rounded shadow">
-        <img src="images/deep-clean.jpg" alt="Deep Cleaning" class="w-full h-40 object-cover rounded mb-4">
+        <img src="images/deep-clean.jpg" class="w-full h-40 object-cover rounded mb-4">
         <h3 class="font-semibold text-xl text-[var(--brand)]">Deep Clean</h3>
         <p class="mt-2 text-gray-600">Top-to-bottom detailed cleans.</p>
       </div>
 
       <div class="bg-white p-6 rounded shadow">
-        <img src="images/move-in.jpg" alt="Move In Out Cleaning" class="w-full h-40 object-cover rounded mb-4">
+        <img src="images/move-in.jpg" class="w-full h-40 object-cover rounded mb-4">
         <h3 class="font-semibold text-xl text-[var(--brand)]">Move In / Out</h3>
         <p class="mt-2 text-gray-600">Perfect for relocations.</p>
       </div>
 
       <div class="bg-white p-6 rounded shadow">
-        <img src="images/office.jpg" alt="Office Cleaning" class="w-full h-40 object-cover rounded mb-4">
+        <img src="images/office.jpg" class="w-full h-40 object-cover rounded mb-4">
         <h3 class="font-semibold text-xl text-[var(--brand)]">Office</h3>
         <p class="mt-2 text-gray-600">Small business & office spaces.</p>
       </div>
@@ -117,27 +118,21 @@
     <div class="w-16 h-1 bg-[var(--brand)] mx-auto mb-8"></div>
 
     <div class="relative">
-      <!-- Left Arrow -->
       <button onclick="scrollGallery(-1)"
-        class="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-[var(--brand)] text-white w-10 h-10 rounded-full shadow hover:opacity-90">
+        class="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-[var(--brand)] text-white w-10 h-10 rounded-full shadow">
         ‹
       </button>
 
-      <!-- Right Arrow -->
       <button onclick="scrollGallery(1)"
-        class="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-[var(--brand)] text-white w-10 h-10 rounded-full shadow hover:opacity-90">
+        class="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-[var(--brand)] text-white w-10 h-10 rounded-full shadow">
         ›
       </button>
 
-      <div id="gallery" class="flex gap-6 overflow-x-scroll scroll-smooth snap-x snap-mandatory px-12 pb-4">
-        <img src="images/clean1.jpg" class="gallery-img snap-center min-w-[320px] h-64 object-cover rounded shadow-lg cursor-pointer">
-        <img src="images/clean2.jpg" class="gallery-img snap-center min-w-[320px] h-64 object-cover rounded shadow-lg cursor-pointer">
-        <img src="images/clean3.jpg" class="gallery-img snap-center min-w-[320px] h-64 object-cover rounded shadow-lg cursor-pointer">
-        <img src="images/clean4.jpg" class="gallery-img snap-center min-w-[320px] h-64 object-cover rounded shadow-lg cursor-pointer">
+      <div id="gallery"
+        class="flex gap-6 overflow-x-scroll scroll-smooth px-12 pb-4">
+        <!-- Images injected via JS -->
       </div>
     </div>
-
-    <p class="text-sm text-gray-500 mt-4">Use arrows or swipe to browse</p>
   </div>
 </section>
 
@@ -154,7 +149,6 @@
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer class="bg-gray-800 text-white py-6 text-center">
   <p>WonderWoman Cleaning • Frenchtown, New Jersey</p>
   <p class="text-sm">&copy; 2026 WonderWoman Cleaning</p>
@@ -167,50 +161,62 @@
 
 <!-- JS -->
 <script>
-  // Scroll animations
+  // Fade-in
   const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) entry.target.classList.add('show');
-    });
+    entries.forEach(e => e.isIntersecting && e.target.classList.add('show'));
   });
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // Infinite gallery
+  const gallery = document.getElementById('gallery');
+  const images = [
+    'images/clean1.jpg',
+    'images/clean2.jpg',
+    'images/clean3.jpg',
+    'images/clean4.jpg'
+  ];
+
+  // Clone images before + after
+  const fullSet = [...images, ...images, ...images];
+
+  fullSet.forEach(src => {
+    const img = document.createElement('img');
+    img.src = src;
+    img.className = 'gallery-img min-w-[320px] h-64 object-cover rounded shadow-lg cursor-pointer';
+    gallery.appendChild(img);
+  });
+
+  // Start centered
+  window.onload = () => {
+    gallery.scrollLeft = gallery.scrollWidth / 3;
+  };
+
+  function scrollGallery(dir) {
+    gallery.scrollBy({ left: dir * 340, behavior: 'smooth' });
+  }
+
+  gallery.addEventListener('scroll', () => {
+    const third = gallery.scrollWidth / 3;
+    if (gallery.scrollLeft < third * 0.5) {
+      gallery.scrollLeft += third;
+    }
+    if (gallery.scrollLeft > third * 1.5) {
+      gallery.scrollLeft -= third;
+    }
+  });
 
   // Lightbox
   const lightbox = document.getElementById('lightbox');
   const lightboxImg = lightbox.querySelector('img');
 
-  document.querySelectorAll('.gallery-img').forEach(img => {
-    img.addEventListener('click', () => {
-      lightboxImg.src = img.src;
+  document.addEventListener('click', e => {
+    if (e.target.classList.contains('gallery-img')) {
+      lightboxImg.src = e.target.src;
       lightbox.style.display = 'flex';
-    });
-  });
-
-  lightbox.addEventListener('click', () => {
-    lightbox.style.display = 'none';
-  });
-
-  // Gallery wrap-around scrolling
-  const gallery = document.getElementById('gallery');
-
-  function scrollGallery(direction) {
-    const scrollAmount = 340;
-    const maxScroll = gallery.scrollWidth - gallery.clientWidth;
-
-    if (direction === 1) {
-      if (gallery.scrollLeft >= maxScroll - 5) {
-        gallery.scrollTo({ left: 0, behavior: 'smooth' });
-      } else {
-        gallery.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-      }
-    } else {
-      if (gallery.scrollLeft <= 5) {
-        gallery.scrollTo({ left: maxScroll, behavior: 'smooth' });
-      } else {
-        gallery.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-      }
     }
-  }
+  });
+
+  lightbox.onclick = () => lightbox.style.display = 'none';
 </script>
 
 </body>

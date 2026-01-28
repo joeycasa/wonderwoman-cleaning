@@ -13,7 +13,7 @@
   <!-- Brand color -->
   <style>
     :root {
-      --brand: #2596be;
+      --brand: #b8b8d3;
     }
 
     /* Scroll animations */
@@ -84,29 +84,25 @@
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
       <div class="bg-white p-6 rounded shadow">
-        <img src="images/residential.jpg" alt="Residential Cleaning"
-             class="w-full h-40 object-cover rounded mb-4">
+        <img src="images/residential.jpg" alt="Residential Cleaning" class="w-full h-40 object-cover rounded mb-4">
         <h3 class="font-semibold text-xl text-[var(--brand)]">Residential</h3>
         <p class="mt-2 text-gray-600">Routine & deep cleaning for homes.</p>
       </div>
 
       <div class="bg-white p-6 rounded shadow">
-        <img src="images/deep-clean.jpg" alt="Deep Cleaning"
-             class="w-full h-40 object-cover rounded mb-4">
+        <img src="images/deep-clean.jpg" alt="Deep Cleaning" class="w-full h-40 object-cover rounded mb-4">
         <h3 class="font-semibold text-xl text-[var(--brand)]">Deep Clean</h3>
         <p class="mt-2 text-gray-600">Top-to-bottom detailed cleans.</p>
       </div>
 
       <div class="bg-white p-6 rounded shadow">
-        <img src="images/move-in.jpg" alt="Move In Out Cleaning"
-             class="w-full h-40 object-cover rounded mb-4">
+        <img src="images/move-in.jpg" alt="Move In Out Cleaning" class="w-full h-40 object-cover rounded mb-4">
         <h3 class="font-semibold text-xl text-[var(--brand)]">Move In / Out</h3>
         <p class="mt-2 text-gray-600">Perfect for relocations.</p>
       </div>
 
       <div class="bg-white p-6 rounded shadow">
-        <img src="images/office.jpg" alt="Office Cleaning"
-             class="w-full h-40 object-cover rounded mb-4">
+        <img src="images/office.jpg" alt="Office Cleaning" class="w-full h-40 object-cover rounded mb-4">
         <h3 class="font-semibold text-xl text-[var(--brand)]">Office</h3>
         <p class="mt-2 text-gray-600">Small business & office spaces.</p>
       </div>
@@ -120,27 +116,28 @@
     <h2 class="text-3xl font-bold mb-2">Our Work</h2>
     <div class="w-16 h-1 bg-[var(--brand)] mx-auto mb-8"></div>
 
-    <div class="flex gap-6 overflow-x-auto pb-4 snap-x snap-mandatory">
-      <img src="images/clean1.jpg"
-           class="gallery-img snap-center min-w-[300px] h-64 object-cover rounded shadow-lg cursor-pointer"
-           alt="Clean kitchen">
+    <div class="relative">
+      <!-- Left Arrow -->
+      <button onclick="scrollGallery(-1)"
+        class="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-[var(--brand)] text-white w-10 h-10 rounded-full shadow hover:opacity-90">
+        ‹
+      </button>
 
-      <img src="images/clean2.jpg"
-           class="gallery-img snap-center min-w-[300px] h-64 object-cover rounded shadow-lg cursor-pointer"
-           alt="Clean bathroom">
+      <!-- Right Arrow -->
+      <button onclick="scrollGallery(1)"
+        class="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-[var(--brand)] text-white w-10 h-10 rounded-full shadow hover:opacity-90">
+        ›
+      </button>
 
-      <img src="images/clean3.jpg"
-           class="gallery-img snap-center min-w-[300px] h-64 object-cover rounded shadow-lg cursor-pointer"
-           alt="Clean living room">
-
-      <img src="images/clean4.jpg"
-           class="gallery-img snap-center min-w-[300px] h-64 object-cover rounded shadow-lg cursor-pointer"
-           alt="Clean bedroom">
+      <div id="gallery" class="flex gap-6 overflow-x-scroll scroll-smooth snap-x snap-mandatory px-12 pb-4">
+        <img src="images/clean1.jpg" class="gallery-img snap-center min-w-[320px] h-64 object-cover rounded shadow-lg cursor-pointer">
+        <img src="images/clean2.jpg" class="gallery-img snap-center min-w-[320px] h-64 object-cover rounded shadow-lg cursor-pointer">
+        <img src="images/clean3.jpg" class="gallery-img snap-center min-w-[320px] h-64 object-cover rounded shadow-lg cursor-pointer">
+        <img src="images/clean4.jpg" class="gallery-img snap-center min-w-[320px] h-64 object-cover rounded shadow-lg cursor-pointer">
+      </div>
     </div>
 
-    <p class="text-sm text-gray-500 mt-4">
-      ← Scroll to view more →
-    </p>
+    <p class="text-sm text-gray-500 mt-4">Use arrows or swipe to browse</p>
   </div>
 </section>
 
@@ -192,6 +189,28 @@
   lightbox.addEventListener('click', () => {
     lightbox.style.display = 'none';
   });
+
+  // Gallery wrap-around scrolling
+  const gallery = document.getElementById('gallery');
+
+  function scrollGallery(direction) {
+    const scrollAmount = 340;
+    const maxScroll = gallery.scrollWidth - gallery.clientWidth;
+
+    if (direction === 1) {
+      if (gallery.scrollLeft >= maxScroll - 5) {
+        gallery.scrollTo({ left: 0, behavior: 'smooth' });
+      } else {
+        gallery.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+      }
+    } else {
+      if (gallery.scrollLeft <= 5) {
+        gallery.scrollTo({ left: maxScroll, behavior: 'smooth' });
+      } else {
+        gallery.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+      }
+    }
+  }
 </script>
 
 </body>

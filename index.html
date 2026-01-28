@@ -176,6 +176,13 @@
 
 <!-- JS -->
 <script>
+  // Fade-in observer
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => e.isIntersecting && e.target.classList.add('show'));
+  });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // ===== INFINITE SEAMLESS GALLERY =====
   const gallery = document.getElementById('gallery');
   const images = [
     'images/clean1.jpg',
@@ -187,12 +194,8 @@
     'images/clean7.jpg'
   ];
 
-  const CARD_WIDTH = 340; // width including gap
-  const speed = 1; // pixels per frame
-  let offset = 0;
-
-  // Build 3 copies
-  const track = [...images, ...images, ...images];
+  const CARD_WIDTH = 340; // width + gap
+  const track = [...images, ...images, ...images]; // 3x images for seamless scroll
   track.forEach(src => {
     const img = document.createElement('img');
     img.src = src;
@@ -201,25 +204,41 @@
     gallery.appendChild(img);
   });
 
-  // Continuous scroll
-  function animate() {
-    offset += speed;
-    if (offset >= images.length * CARD_WIDTH) {
-      // reset seamlessly
-      offset -= images.length * CARD_WIDTH;
-    }
-    gallery.scrollLeft = offset;
-    requestAnimationFrame(animate);
-  }
-  animate();
+  let offset = images.length * CARD_WIDTH; // start in middle copy
+  let isScrolling = false;
+
+  gallery.scrollLeft = offset;
 
   // Arrow navigation
-  document.querySelector('[onclick="scrollGallery(-1)"]').addEventListener('click', () => {
-    offset -= CARD_WIDTH;
-  });
-  document.querySelector('[onclick="scrollGallery(1)"]').addEventListener('click', () => {
-    offset += CARD_WIDTH;
-  });
+  function scrollGallery(dir) {
+    if (isScrolling) return;
+    isScrolling = true;
+
+    let target = offset + dir * CARD_WIDTH;
+    let start = offset;
+    let duration = 350;
+    let startTime = performance.now();
+
+    function animate(time) {
+      let elapsed = time - startTime;
+      let progress = Math.min(elapsed / duration, 1);
+      gallery.scrollLeft = start + (target - start) * progress;
+      if (progress < 1) {
+        requestAnimationFrame(animate);
+      } else {
+        offset = target;
+
+        // Seamless reset
+        if (offset >= images.length * 2 * CARD_WIDTH) offset -= images.length * CARD_WIDTH;
+        if (offset < images.length * CARD_WIDTH) offset += images.length * CARD_WIDTH;
+
+        gallery.scrollLeft = offset;
+        isScrolling = false;
+      }
+    }
+
+    requestAnimationFrame(animate);
+  }
 
   // Lightbox
   const lightbox = document.getElementById('lightbox');

@@ -13,12 +13,12 @@
   <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Brand + effects -->
   <style>
     :root {
-      --brand: #d9a0d5;
+      --brand: #b8b8d3;
     }
 
+    /* Fade-in animation */
     .fade-in {
       opacity: 0;
       transform: translateY(20px);
@@ -29,6 +29,16 @@
       transform: translateY(0);
     }
 
+    /* Hide scrollbars */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    /* Lightbox */
     #lightbox {
       display: none;
       position: fixed;
@@ -51,7 +61,10 @@
 <!-- STICKY HEADER -->
 <header class="sticky top-0 z-40 bg-white shadow">
   <div class="max-w-7xl mx-auto px-6 py-3 flex justify-between items-center">
-    <span class="font-bold text-lg text-[var(--brand)]">WonderWoman Cleaning</span>
+    <div class="flex items-center gap-3">
+      <img src="images/hero-cleaning.ico" alt="WonderWoman Cleaning Logo" class="w-8 h-8">
+      <span class="font-bold text-lg text-[var(--brand)]">WonderWoman Cleaning</span>
+    </div>
     <a href="tel:+1PHONE_NUMBER"
        class="bg-[var(--brand)] text-white px-5 py-2 rounded-full font-semibold hover:opacity-90 transition">
       📞 Call Now
@@ -118,19 +131,21 @@
     <div class="w-16 h-1 bg-[var(--brand)] mx-auto mb-8"></div>
 
     <div class="relative">
+      <!-- Left Arrow -->
       <button onclick="scrollGallery(-1)"
         class="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-[var(--brand)] text-white w-10 h-10 rounded-full shadow">
         ‹
       </button>
 
+      <!-- Right Arrow -->
       <button onclick="scrollGallery(1)"
         class="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-[var(--brand)] text-white w-10 h-10 rounded-full shadow">
         ›
       </button>
 
       <div id="gallery"
-        class="flex gap-6 overflow-x-scroll scroll-smooth px-12 pb-4">
-        <!-- Images injected via JS -->
+        class="flex gap-6 overflow-hidden px-12 no-scrollbar">
+        <!-- images injected by JS -->
       </div>
     </div>
   </div>
@@ -167,7 +182,7 @@
   });
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-  // Infinite gallery
+  // Infinite gallery (true loop)
   const gallery = document.getElementById('gallery');
   const images = [
     'images/clean1.jpg',
@@ -176,34 +191,42 @@
     'images/clean4.jpg'
   ];
 
-  // Clone images before + after
-  const fullSet = [...images, ...images, ...images];
+  const track = [...images, ...images, ...images];
 
-  fullSet.forEach(src => {
+  track.forEach(src => {
     const img = document.createElement('img');
     img.src = src;
     img.className = 'gallery-img min-w-[320px] h-64 object-cover rounded shadow-lg cursor-pointer';
     gallery.appendChild(img);
   });
 
-  // Start centered
-  window.onload = () => {
-    gallery.scrollLeft = gallery.scrollWidth / 3;
-  };
+  let index = images.length;
 
-  function scrollGallery(dir) {
-    gallery.scrollBy({ left: dir * 340, behavior: 'smooth' });
+  function updatePosition() {
+    gallery.scrollTo({
+      left: index * 340,
+      behavior: 'smooth'
+    });
   }
 
-  gallery.addEventListener('scroll', () => {
-    const third = gallery.scrollWidth / 3;
-    if (gallery.scrollLeft < third * 0.5) {
-      gallery.scrollLeft += third;
+  function scrollGallery(dir) {
+    index += dir;
+
+    if (index >= images.length * 2) {
+      index = images.length;
+      gallery.scrollLeft = index * 340;
     }
-    if (gallery.scrollLeft > third * 1.5) {
-      gallery.scrollLeft -= third;
+    if (index < images.length) {
+      index = images.length * 2 - 1;
+      gallery.scrollLeft = index * 340;
     }
-  });
+
+    updatePosition();
+  }
+
+  window.onload = () => {
+    gallery.scrollLeft = index * 340;
+  };
 
   // Lightbox
   const lightbox = document.getElementById('lightbox');

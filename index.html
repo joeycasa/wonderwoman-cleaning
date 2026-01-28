@@ -164,7 +164,7 @@
   </div>
 </section>
 
-<footer class="bg-gray-800 text-white py-6 text-center">
+<footer class="bg-[var(--brand)] text-white py-6 text-center">
   <p>WonderWoman Cleaning • Frenchtown, New Jersey</p>
   <p class="text-sm">&copy; 2026 WonderWoman Cleaning</p>
 </footer>
@@ -176,13 +176,6 @@
 
 <!-- JS -->
 <script>
-  // Fade-in
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(e => e.isIntersecting && e.target.classList.add('show'));
-  });
-  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
-  // ===== INFINITE GALLERY (FIXED) =====
   const gallery = document.getElementById('gallery');
   const images = [
     'images/clean1.jpg',
@@ -194,11 +187,12 @@
     'images/clean7.jpg'
   ];
 
-  const CARD_WIDTH = 340;
+  const CARD_WIDTH = 340; // width including gap
+  const speed = 1; // pixels per frame
+  let offset = 0;
 
-  // build 3 copies
+  // Build 3 copies
   const track = [...images, ...images, ...images];
-
   track.forEach(src => {
     const img = document.createElement('img');
     img.src = src;
@@ -207,51 +201,35 @@
     gallery.appendChild(img);
   });
 
-  let index = images.length; // start in middle set
-
-  function jumpWithoutAnimation(newIndex) {
-    gallery.style.scrollBehavior = 'auto';
-    index = newIndex;
-    gallery.scrollLeft = index * CARD_WIDTH;
-    gallery.offsetHeight; // force reflow
-    gallery.style.scrollBehavior = 'smooth';
+  // Continuous scroll
+  function animate() {
+    offset += speed;
+    if (offset >= images.length * CARD_WIDTH) {
+      // reset seamlessly
+      offset -= images.length * CARD_WIDTH;
+    }
+    gallery.scrollLeft = offset;
+    requestAnimationFrame(animate);
   }
+  animate();
 
-  function scrollGallery(dir) {
-    index += dir;
-    gallery.scrollTo({
-      left: index * CARD_WIDTH,
-      behavior: 'smooth'
-    });
-
-    // after animation completes, silently reset if needed
-    setTimeout(() => {
-      if (index >= images.length * 2) {
-        jumpWithoutAnimation(images.length);
-      }
-      if (index < images.length) {
-        jumpWithoutAnimation(images.length * 2 - 1);
-      }
-    }, 350);
-  }
-
-  window.onload = () => {
-    gallery.style.scrollBehavior = 'auto';
-    gallery.scrollLeft = index * CARD_WIDTH;
-    gallery.style.scrollBehavior = 'smooth';
-  };
+  // Arrow navigation
+  document.querySelector('[onclick="scrollGallery(-1)"]').addEventListener('click', () => {
+    offset -= CARD_WIDTH;
+  });
+  document.querySelector('[onclick="scrollGallery(1)"]').addEventListener('click', () => {
+    offset += CARD_WIDTH;
+  });
 
   // Lightbox
   const lightbox = document.getElementById('lightbox');
   const lightboxImg = lightbox.querySelector('img');
-
   document.addEventListener('click', e => {
     if (e.target.classList.contains('gallery-img')) {
       lightboxImg.src = e.target.src;
       lightbox.style.display = 'flex';
     }
   });
-
   lightbox.onclick = () => (lightbox.style.display = 'none');
 </script>
 

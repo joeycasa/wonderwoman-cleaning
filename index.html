@@ -16,6 +16,7 @@
   <style>
     :root {
       --brand: #d9a0d5;
+      --brand-dark: #b07aac;
     }
 
     /* Fade-in animation */
@@ -53,6 +54,37 @@
       max-height: 90%;
       border-radius: 0.5rem;
     }
+
+    /* Pricing */
+    .price-card {
+      border: 2px solid #e9d5e7;
+      border-radius: 1rem;
+      background: white;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .price-card:hover {
+      box-shadow: 0 8px 30px rgba(217,160,213,0.25);
+      transform: translateY(-3px);
+    }
+    .addon-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5rem 0;
+      border-bottom: 1px dashed #e9d5e7;
+    }
+    .addon-row:last-child {
+      border-bottom: none;
+    }
+    .price-badge {
+      background: #f3e8f2;
+      color: var(--brand-dark);
+      font-weight: 700;
+      padding: 0.2rem 0.65rem;
+      border-radius: 9999px;
+      font-size: 0.85rem;
+      white-space: nowrap;
+    }
   </style>
 </head>
 
@@ -65,7 +97,7 @@
       <img src="images/hero-cleaning.ico" alt="WonderWoman Cleaning Logo" class="w-8 h-8">
       <span class="font-bold text-lg text-[var(--brand)]">WonderWoman Cleaning</span>
     </div>
-    <a href="tel:+1PHONE_NUMBER"
+    <a href="tel:+19084378796"
        class="bg-[var(--brand)] text-white px-5 py-2 rounded-full font-semibold hover:opacity-90 transition">
      📞 Call &nbsp;
     </a>
@@ -73,7 +105,7 @@
 </header>
 
 <!-- HERO -->
-<section class="bg-cover bg-center" style="background-image: url('images/hero-cleaning.jpg');">
+<section class="bg-cover bg-center" style="background-image: url('images/pilllogo.jpg');">
   <div class="bg-black bg-opacity-50">
     <div class="max-w-4xl mx-auto text-center py-28 px-6 fade-in">
       <h1 class="text-4xl md:text-5xl font-bold text-white"> 
@@ -124,8 +156,80 @@
   </div>
 </section>
 
+<!-- ===================== PRICING ===================== -->
+<section id="pricing" class="py-16 bg-white">
+  <div class="max-w-6xl mx-auto px-6 fade-in">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-bold mb-2">Transparent Pricing</h2>
+      <div class="w-16 h-1 bg-[var(--brand)] mx-auto mb-4"></div>
+      <p class="text-gray-500 max-w-xl mx-auto">No surprises — just honest, straightforward rates. Minimum commitment of 3 hours. Available 7 days a week.</p>
+    </div>
+
+    <!-- Standard Cleaning Rate Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+
+      <!-- Your Supplies -->
+      <div class="price-card p-8 text-center">
+        <div class="inline-block bg-[#f3e8f2] text-[var(--brand-dark)] text-sm font-semibold px-4 py-1 rounded-full mb-4">Your Supplies</div>
+        <div class="text-5xl font-extrabold text-gray-800 mb-1">$24<span class="text-2xl font-medium text-gray-400">/hr</span></div>
+        <h3 class="text-xl font-semibold text-[var(--brand)] mb-6">Standard Cleaning</h3>
+        <ul class="text-gray-600 text-left space-y-2 text-sm">
+          <li>🍽️ <strong>Kitchen:</strong> Sink, countertops, appliances, tables & chairs, oven & stove (outside), microwave (in & out), fridge (outside), floors swept & mopped, baseboards & cobwebs</li>
+          <li>🚿 <strong>Bathroom:</strong> Vanity, sink, toilet, tub, shower, mirrors, light fixtures, floors swept & mopped, baseboards & cobwebs</li>
+          <li>🛏️ <strong>Rooms / Bedrooms:</strong> Furniture dusted & polished, window sills, mirrors, carpets vacuumed, floors swept & mopped, trash emptied, ceiling fans & fixtures dusted, baseboards & cobwebs</li>
+        </ul>
+      </div>
+
+      <!-- Our Supplies -->
+      <div class="price-card p-8 text-center border-[var(--brand)] relative">
+        <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-[var(--brand)] text-white text-xs font-bold px-4 py-1 rounded-full shadow">WE BRING EVERYTHING</div>
+        <div class="inline-block bg-[#f3e8f2] text-[var(--brand-dark)] text-sm font-semibold px-4 py-1 rounded-full mb-4 mt-2">Our Supplies</div>
+        <div class="text-5xl font-extrabold text-gray-800 mb-1">$26<span class="text-2xl font-medium text-gray-400">/hr</span></div>
+        <h3 class="text-xl font-semibold text-[var(--brand)] mb-6">Standard Cleaning</h3>
+        <ul class="text-gray-600 text-left space-y-2 text-sm">
+          <li>🍽️ <strong>Kitchen:</strong> Sink, countertops, appliances, tables & chairs, oven & stove (outside), microwave (in & out), fridge (outside), floors swept & mopped, baseboards & cobwebs</li>
+          <li>🚿 <strong>Bathroom:</strong> Vanity, sink, toilet, tub, shower, mirrors, light fixtures, floors swept & mopped, baseboards & cobwebs</li>
+          <li>🛏️ <strong>Rooms / Bedrooms:</strong> Furniture dusted & polished, window sills, mirrors, carpets vacuumed, floors swept & mopped, trash emptied, ceiling fans & fixtures dusted, baseboards & cobwebs</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Add-On Services -->
+    <div class="price-card p-8">
+      <h3 class="text-2xl font-bold text-center mb-2">Add-On Services</h3>
+      <div class="w-12 h-1 bg-[var(--brand)] mx-auto mb-6"></div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12">
+        <div>
+          <div class="addon-row"><span class="text-gray-700">Dusting frames, knick-knacks, artwork</span><span class="price-badge">$5 / room</span></div>
+          <div class="addon-row"><span class="text-gray-700">Refrigerator (inside)</span><span class="price-badge">$20</span></div>
+          <div class="addon-row"><span class="text-gray-700">Oven (inside, top & under burners)</span><span class="price-badge">$10</span></div>
+          <div class="addon-row"><span class="text-gray-700">Windows (inside)</span><span class="price-badge">$2 / window</span></div>
+          <div class="addon-row"><span class="text-gray-700">Laundry (washed, dried, folded)</span><span class="price-badge">$5 / load</span></div>
+          <div class="addon-row"><span class="text-gray-700">Dishes (washed, dried, put away)</span><span class="price-badge">$10</span></div>
+        </div>
+        <div>
+          <div class="addon-row"><span class="text-gray-700">Beds changed</span><span class="price-badge">$5 / bed</span></div>
+          <div class="addon-row"><span class="text-gray-700">Blinds dusted</span><span class="price-badge">$5 / window</span></div>
+          <div class="addon-row"><span class="text-gray-700">Kitchen cabinets (inside)</span><span class="price-badge">$25</span></div>
+          <div class="addon-row"><span class="text-gray-700">Carpet spot stain removal</span><span class="price-badge">$10</span></div>
+          <div class="addon-row"><span class="text-gray-700">Carpet steam cleaning</span><span class="price-badge">$40 / room<br><span style="font-size:0.75rem;font-weight:400;">($35/room for 3+ rooms)</span></span></div>
+          <div class="addon-row"><span class="text-gray-700">Organization (cabinets, dressers, closets)</span><span class="price-badge">$35 / room</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Guarantee badge -->
+    <div class="mt-10 text-center">
+      <span class="inline-block bg-[#f3e8f2] border border-[#d9a0d5] text-[var(--brand-dark)] font-semibold px-6 py-3 rounded-full text-lg shadow-sm">
+        ✨ 100% Satisfaction Guaranteed
+      </span>
+    </div>
+  </div>
+</section>
+<!-- ===================== END PRICING ===================== -->
+
 <!-- GALLERY -->
-<section class="py-12">
+<section class="py-12 bg-gray-50">
   <div class="max-w-6xl mx-auto px-6 text-center fade-in">
     <h2 class="text-3xl font-bold mb-2">Our Work</h2>
     <div class="w-16 h-1 bg-[var(--brand)] mx-auto mb-8"></div>
@@ -152,14 +256,14 @@
 </section>
 
 <!-- CONTACT -->
-<section id="contact" class="py-12 bg-gray-50">
+<section id="contact" class="py-12 bg-white">
   <div class="max-w-4xl mx-auto px-6 text-center fade-in">
     <h2 class="text-3xl font-bold mb-2">Get a Free Quote</h2>
     <div class="w-16 h-1 bg-[var(--brand)] mx-auto mb-6"></div>
 
     <p class="text-lg font-semibold">
-      📞 <a href="tel:+1PHONE_NUMBER" class="text-[var(--brand)] hover:underline">PHONE_NUMBER</a><br>
-      ✉️ <a href="mailto:EMAIL_ADDRESS" class="text-[var(--brand)] hover:underline">EMAIL_ADDRESS</a>
+      📞 <a href="tel:+19084378796" class="text-[var(--brand)] hover:underline">908-437-8796</a><br>
+      ✉️ <a href="mailto:sales@wonderwomanhomecleaningservice.com" class="text-[var(--brand)] hover:underline">sales@wonderwomanhomecleaningservice.com</a>
     </p>
   </div>
 </section>

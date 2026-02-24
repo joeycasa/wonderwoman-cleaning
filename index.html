@@ -92,20 +92,29 @@
 
 <!-- STICKY HEADER -->
 <header class="sticky top-0 z-40 bg-white shadow">
-  <div class="max-w-7xl mx-auto px-6 py-1 flex justify-between items-center relative">
-    <!-- Logo left -->
-    <div class="w-28 flex items-center">
-      <img src="images/pilllogo.jpg" alt="WonderWoman Cleaning Logo" class="w-28 h-18">
+  <div class="max-w-7xl mx-auto px-4 py-2 flex flex-col sm:flex-row justify-between items-center gap-2 sm:gap-0 sm:relative">
+    <!-- Top row on mobile: logo + call button side by side -->
+    <div class="flex w-full sm:w-auto justify-between items-center sm:justify-start">
+      <!-- Logo left -->
+      <div class="w-24 sm:w-28 flex items-center">
+        <img src="images/pilllogo.jpg" alt="WonderWoman Cleaning Logo" class="w-24 sm:w-28">
+      </div>
+
+      <!-- Call button — shows on mobile in top row, hidden on sm+ -->
+      <a href="tel:+19084378796"
+         class="sm:hidden bg-[var(--brand)] text-white px-4 py-1 rounded-full font-semibold hover:opacity-90 transition">
+       📞 Call
+      </a>
     </div>
 
     <!-- Centered title image -->
-    <div class="absolute left-1/2 -translate-x-1/2">
-      <img src="images/title.png" alt="WonderWoman Cleaning Service" class="h-10 w-auto">
+    <div class="sm:absolute sm:left-1/2 sm:-translate-x-1/2">
+      <img src="images/title.png" alt="WonderWoman Cleaning Service" class="h-8 sm:h-10 w-auto">
     </div>
 
-    <!-- Call button right -->
+    <!-- Call button — hidden on mobile, shows on sm+ -->
     <a href="tel:+19084378796"
-       class="bg-[var(--brand)] text-white px-4 py-1 rounded-full font-semibold hover:opacity-90 transition">
+       class="hidden sm:block bg-[var(--brand)] text-white px-4 py-1 rounded-full font-semibold hover:opacity-90 transition">
      📞 Call &nbsp;
     </a>
   </div>
@@ -197,6 +206,7 @@
           <li>🍽️ <strong>Kitchen:</strong> Sink, countertops, appliances, tables & chairs, oven & stove (outside), microwave (in & out), fridge (outside), floors swept & mopped, baseboards & cobwebs</li>
           <li>🚿 <strong>Bathroom:</strong> Vanity, sink, toilet, tub, shower, mirrors, light fixtures, floors swept & mopped, baseboards & cobwebs</li>
           <li>🛏️ <strong>Rooms / Bedrooms:</strong> Furniture dusted & polished, window sills, mirrors, carpets vacuumed, floors swept & mopped, trash emptied, ceiling fans & fixtures dusted, baseboards & cobwebs</li>
+          <li>🧼 <strong>Our Meaterials!</strong> Everything done with OUR soaps & materials!</li>
         </ul>
       </div>
     </div>
@@ -268,10 +278,16 @@
     <h2 class="text-3xl font-bold mb-2">Get a Free Quote</h2>
     <div class="w-16 h-1 bg-[var(--brand)] mx-auto mb-6"></div>
 
-    <p class="text-lg font-semibold">
-      📞 <a href="tel:+19084378796" class="text-[var(--brand)] hover:underline">908-437-8796</a><br>
-      ✉️ <a href="mailto:sales@wonderwomanhomecleaningservice.com" class="text-[var(--brand)] hover:underline">sales@wonderwomanhomecleaningservice.com</a>
-    </p>
+    <div class="text-lg font-semibold space-y-3">
+      <div class="flex items-center justify-center gap-2">
+        <span>📞</span>
+        <a href="tel:+19084378796" class="text-[var(--brand)] hover:underline">908-437-8796</a>
+      </div>
+      <div class="flex items-center justify-center gap-2 flex-wrap">
+        <span class="shrink-0">✉️</span>
+        <a href="mailto:sales@wonderwomanhomecleaningservice.com" class="text-[var(--brand)] hover:underline break-all">sales@wonderwomanhomecleaningservice.com</a>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -286,7 +302,7 @@
 </div>
 
 <!-- JS -->
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   // Fade-in observer
   const observer = new IntersectionObserver(entries => {
     entries.forEach(e => e.isIntersecting && e.target.classList.add('show'));
@@ -354,14 +370,3 @@
   // Lightbox
   const lightbox = document.getElementById('lightbox');
   const lightboxImg = lightbox.querySelector('img');
-  document.addEventListener('click', e => {
-    if (e.target.classList.contains('gallery-img')) {
-      lightboxImg.src = e.target.src;
-      lightbox.style.display = 'flex';
-    }
-  });
-  lightbox.onclick = () => (lightbox.style.display = 'none');
-</script>
-
-</body>
-</html>

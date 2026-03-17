@@ -169,6 +169,13 @@
       font-size: 0.85rem;
       white-space: nowrap;
     }
+
+    /* ── Slogan band (between Pricing & Gallery) ── */
+    .slogan-band {
+      background: linear-gradient(135deg, #f9f0f8 0%, #f3e8f2 50%, #f9f0f8 100%);
+      border-top: 1px solid #e9d5e7;
+      border-bottom: 1px solid #e9d5e7;
+    }
   </style>
 </head>
 
@@ -219,6 +226,19 @@
       <p class="mt-4 text-lg text-white">
         Family Owned &amp; Operated · Fully Insured · Available 7 Days a Week
       </p>
+
+      <!-- ═══════════════════════════════════════════════════════
+           SLOGAN PLACEMENT 1 — Hero (large & prominent)
+           Displayed beneath the subline, above the CTA button.
+           Drop-shadow lifts it off the dark overlay beautifully.
+      ═══════════════════════════════════════════════════════ -->
+      <div class="mt-6 flex justify-center">
+        <img src="images/slogan.png"
+             alt="A Clean Home, A Clean Life – WonderWoman Cleaning slogan"
+             class="w-72 sm:w-96 md:w-[28rem] drop-shadow-lg"
+             width="448" height="112" loading="eager">
+      </div>
+
       <a href="#contact"
          class="mt-8 inline-block bg-[var(--brand)] text-white font-semibold py-4 px-8 rounded shadow hover:opacity-90 transition">
         Get Your Free Quote
@@ -331,6 +351,22 @@
 </section>
 <!-- ===================== END PRICING ===================== -->
 
+<!-- ═══════════════════════════════════════════════════════════
+     SLOGAN PLACEMENT 2 — Interstitial band between Pricing & Gallery
+     Full-width soft-pink strip; slogan sits centered, medium size.
+     The decorative rules on either side frame it like a quote.
+═══════════════════════════════════════════════════════════ -->
+<div class="slogan-band py-8 fade-in" aria-label="Our slogan: A Clean Home, A Clean Life">
+  <div class="flex items-center justify-center gap-4 px-6 max-w-xl mx-auto">
+    <span class="flex-1 h-px bg-[var(--brand)] opacity-50"></span>
+    <img src="images/slogan.png"
+         alt="A Clean Home, A Clean Life"
+         class="w-48 sm:w-64 opacity-90"
+         width="256" height="64" loading="lazy">
+    <span class="flex-1 h-px bg-[var(--brand)] opacity-50"></span>
+  </div>
+</div>
+
 <!-- GALLERY -->
 <section id="gallery-section" class="py-12 bg-gray-50">
   <div class="max-w-6xl mx-auto px-6 text-center fade-in">
@@ -399,6 +435,19 @@
     Residential &amp; Commercial · Hunterdon, Somerset &amp; Warren Counties
   </p>
   <p class="text-sm mt-1 opacity-90">Fully Insured · Family Owned &amp; Operated</p>
+
+  <!-- ═══════════════════════════════════════════════════════
+       SLOGAN PLACEMENT 3 — Footer (small, elegant)
+       Sits just above the copyright line. White with reduced
+       opacity blends softly into the brand-pink background.
+  ═══════════════════════════════════════════════════════ -->
+  <div class="mt-3 mb-1 flex justify-center">
+    <img src="images/slogan.png"
+         alt="A Clean Home, A Clean Life"
+         class="w-32 sm:w-40 opacity-80"
+         width="160" height="40" loading="lazy">
+  </div>
+
   <p class="text-sm mt-1">&copy; 2026 WonderWoman Cleaning</p>
 </footer>
 

@@ -3,59 +3,34 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <!-- ============================================================
-       PRIMARY SEO META TAGS
-       - Title: includes primary keyword + location (under 60 chars)
-       - Description: unique, action-oriented, 150-160 chars
-  ============================================================ -->
-  <title>WonderWoman Cleaning | Residential & Commercial Cleaning in Hunterdon, Somerset & Warren County, NJ</title>
-  <meta name="description" content="Professional house & commercial cleaning in Hunterdon, Somerset & Warren County, NJ. Residential, deep clean, move-in/out & office cleaning. Fully insured. Call 908-437-8796 for a free quote!" />
-
-  <!-- Canonical URL — replace with your actual domain -->
+  <title>WonderWoman Cleaning | Residential &amp; Commercial Cleaning in Hunterdon, Somerset &amp; Warren County, NJ</title>
+  <meta name="description" content="Professional house &amp; commercial cleaning in Hunterdon, Somerset &amp; Warren County, NJ. Residential, deep clean, move-in/out &amp; office cleaning. Fully insured. Call 908-437-8796 for a free quote!" />
   <link rel="canonical" href="https://www.wonderwomancleaningnj.com/" />
-
-  <!-- ============================================================
-       OPEN GRAPH (Facebook / social sharing previews)
-  ============================================================ -->
   <meta property="og:type"        content="website" />
   <meta property="og:url"         content="https://www.wonderwomancleaningnj.com/" />
-  <meta property="og:title"       content="WonderWoman Cleaning | Residential & Commercial Cleaning – NJ" />
-  <meta property="og:description" content="Professional house & commercial cleaning in Hunterdon, Somerset & Warren County, NJ. Family owned & fully insured. Get a free quote today!" />
+  <meta property="og:title"       content="WonderWoman Cleaning | Residential &amp; Commercial Cleaning – NJ" />
+  <meta property="og:description" content="Professional house &amp; commercial cleaning in Hunterdon, Somerset &amp; Warren County, NJ. Family owned &amp; fully insured. Get a free quote today!" />
   <meta property="og:image"       content="https://www.wonderwomancleaningnj.com/images/hero-cleaning.jpg" />
   <meta property="og:locale"      content="en_US" />
   <meta property="og:site_name"   content="WonderWoman Cleaning" />
-
-  <!-- ============================================================
-       TWITTER CARD
-  ============================================================ -->
   <meta name="twitter:card"        content="summary_large_image" />
-  <meta name="twitter:title"       content="WonderWoman Cleaning | Residential & Commercial Cleaning – NJ" />
-  <meta name="twitter:description" content="Family-owned house & commercial cleaning serving Hunterdon, Somerset & Warren County, NJ. Fully insured. Free quotes!" />
+  <meta name="twitter:title"       content="WonderWoman Cleaning | Residential &amp; Commercial Cleaning – NJ" />
+  <meta name="twitter:description" content="Family-owned house &amp; commercial cleaning serving Hunterdon, Somerset &amp; Warren County, NJ. Fully insured. Free quotes!" />
   <meta name="twitter:image"       content="https://www.wonderwomancleaningnj.com/images/hero-cleaning.jpg" />
-
-  <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="images/hero-cleaning.ico">
-
-  <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- ============================================================
-       STRUCTURED DATA — LocalBusiness (JSON-LD)
-       Helps Google show your business in Maps, Knowledge Panel,
-       and local search results with rich details.
-  ============================================================ -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "name": "WonderWoman Cleaning",
-    "description": "Professional residential and commercial cleaning services serving Hunterdon, Somerset, and Warren Counties in New Jersey. Specializing in standard cleaning, deep cleaning, move-in/move-out, office cleaning, and small business cleaning.",
+    "description": "Professional residential and commercial cleaning services serving Hunterdon, Somerset, and Warren Counties in New Jersey.",
     "url": "https://www.wonderwomancleaningnj.com/",
     "telephone": "+1-908-437-8796",
     "email": "wonderwomanhomecleaningservice@gmail.com",
     "image": "https://www.wonderwomancleaningnj.com/images/hero-cleaning.jpg",
     "logo": "https://www.wonderwomancleaningnj.com/images/pilllogo.jpg",
+    "sameAs": ["https://www.facebook.com/WonderWomancleaningservice/"],
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "High Bridge",
@@ -102,8 +77,6 @@
       --brand: #d9a0d5;
       --brand-dark: #b07aac;
     }
-
-    /* Fade-in animation */
     .fade-in {
       opacity: 0;
       transform: translateY(20px);
@@ -113,17 +86,8 @@
       opacity: 1;
       transform: translateY(0);
     }
-
-    /* Hide scrollbars */
-    .no-scrollbar::-webkit-scrollbar {
-      display: none;
-    }
-    .no-scrollbar {
-      -ms-overflow-style: none;
-      scrollbar-width: none;
-    }
-
-    /* Lightbox */
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     #lightbox {
       display: none;
       position: fixed;
@@ -133,13 +97,7 @@
       justify-content: center;
       align-items: center;
     }
-    #lightbox img {
-      max-width: 90%;
-      max-height: 90%;
-      border-radius: 0.5rem;
-    }
-
-    /* Pricing */
+    #lightbox img { max-width: 90%; max-height: 90%; border-radius: 0.5rem; }
     .price-card {
       border: 2px solid #e9d5e7;
       border-radius: 1rem;
@@ -157,9 +115,7 @@
       padding: 0.5rem 0;
       border-bottom: 1px dashed #e9d5e7;
     }
-    .addon-row:last-child {
-      border-bottom: none;
-    }
+    .addon-row:last-child { border-bottom: none; }
     .price-badge {
       background: #f3e8f2;
       color: var(--brand-dark);
@@ -169,12 +125,37 @@
       font-size: 0.85rem;
       white-space: nowrap;
     }
-
-    /* ── Slogan band (between Pricing & Gallery) ── */
     .slogan-band {
       background: linear-gradient(135deg, #f9f0f8 0%, #f3e8f2 50%, #f9f0f8 100%);
       border-top: 1px solid #e9d5e7;
       border-bottom: 1px solid #e9d5e7;
+    }
+
+    /* Facebook button */
+    .fb-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: #1877F2;
+      color: #fff;
+      font-weight: 600;
+      padding: 0.65rem 1.5rem;
+      border-radius: 9999px;
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 2px 10px rgba(24,119,242,0.3);
+    }
+    .fb-link:hover {
+      background: #1464d0;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 18px rgba(24,119,242,0.4);
+    }
+    .fb-link svg {
+      width: 20px;
+      height: 20px;
+      fill: white;
+      flex-shrink: 0;
     }
   </style>
 </head>
@@ -184,18 +165,12 @@
 <!-- STICKY HEADER -->
 <header class="sticky top-0 z-40 bg-white shadow">
   <div class="max-w-7xl mx-auto px-3 py-1 flex justify-between items-center relative">
-    <!-- Logo left — alt text is descriptive for image SEO -->
     <div class="w-16 sm:w-28 flex items-center shrink-0">
       <img src="images/pilllogo.jpg" alt="WonderWoman Cleaning logo – High Bridge, NJ" class="w-16 sm:w-28" width="112" height="112">
     </div>
-
-    <!-- Centered title image -->
     <div class="absolute left-1/2 -translate-x-1/2 px-2">
       <img src="images/title.png" alt="WonderWoman Cleaning Service" class="h-7 sm:h-10 w-auto max-w-[160px] sm:max-w-none" width="300" height="40">
     </div>
-
-    <!-- Text or Call button right -->
-    <!-- aria-label improves accessibility and is read by screen readers / assistive SEO -->
     <a href="tel:+19084378796"
        aria-label="Call or text WonderWoman Cleaning at 908-437-8796"
        class="shrink-0 bg-[var(--brand)] text-white px-3 py-1 rounded-full font-semibold hover:opacity-90 transition text-sm sm:text-base">
@@ -205,16 +180,10 @@
 </header>
 
 <!-- HERO -->
-<!-- role="img" + aria-label make the background image accessible -->
 <section class="bg-cover bg-center" style="background-image: url('images/hero-cleaning.jpg');"
          role="img" aria-label="Clean, sparkling kitchen cleaned by WonderWoman Cleaning">
   <div class="bg-black bg-opacity-50">
     <div class="max-w-4xl mx-auto text-center py-28 px-6 fade-in">
-      <!--
-        H1: One per page. Includes primary keywords:
-        "Professional Cleaning Service", "New Jersey",
-        "Family Owned" — naturally, not stuffed.
-      -->
       <h1 class="text-4xl md:text-5xl font-bold text-white">
         Professional Residential &amp; Commercial Cleaning<br>
         Hunterdon, Somerset &amp; Warren County, NJ
@@ -222,14 +191,12 @@
       <p class="mt-4 text-lg text-white">
         Family Owned &amp; Operated · Fully Insured · Available 7 Days a Week
       </p>
-
-            <div class="mt-6 flex justify-center">
+      <div class="mt-6 flex justify-center">
         <img src="images/slogan.png"
              alt="A Clean Home, A Clean Life – WonderWoman Cleaning slogan"
              class="w-72 sm:w-96 md:w-[28rem] drop-shadow-lg"
              width="448" height="112" loading="eager">
       </div>
-
       <a href="#contact"
          class="mt-8 inline-block bg-[var(--brand)] text-white font-semibold py-4 px-8 rounded shadow hover:opacity-90 transition">
         Get Your Free Quote
@@ -239,11 +206,6 @@
 </section>
 
 <!-- SERVICES -->
-<!--
-  id="services" lets internal anchor links and sitemaps point here.
-  Each service card uses a descriptive <h3> with location keywords
-  woven in naturally.
--->
 <section id="services" class="py-12 bg-gray-50">
   <div class="max-w-6xl mx-auto px-6 text-center fade-in">
     <div class="flex items-center justify-center gap-4 mb-2">
@@ -251,18 +213,14 @@
       <h2 class="text-3xl font-bold">Our Cleaning Services</h2>
     </div>
     <div class="w-16 h-1 bg-[var(--brand)] mx-auto mb-10"></div>
-
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-
       <div class="bg-white p-6 rounded shadow">
-        <!-- Descriptive alt text for every service image -->
         <img src="images/residential.jpg" class="w-full h-40 object-cover rounded mb-4"
              alt="Clean living room after residential house cleaning in New Jersey"
              width="320" height="160" loading="lazy">
         <h3 class="font-semibold text-xl text-[var(--brand)]">Residential Cleaning</h3>
         <p class="mt-2 text-gray-600">Routine &amp; deep cleaning for homes in Hunterdon, Somerset &amp; Warren County.</p>
       </div>
-
       <div class="bg-white p-6 rounded shadow">
         <img src="images/deep-clean.jpg" class="w-full h-40 object-cover rounded mb-4"
              alt="Scrubbing bathroom tiles during a professional deep clean"
@@ -270,7 +228,6 @@
         <h3 class="font-semibold text-xl text-[var(--brand)]">Deep Cleaning</h3>
         <p class="mt-2 text-gray-600">Top-to-bottom detailed cleans for any home or office.</p>
       </div>
-
       <div class="bg-white p-6 rounded shadow">
         <img src="images/move-in.jpg" class="w-full h-40 object-cover rounded mb-4"
              alt="Empty apartment prepped with a move-in / move-out cleaning"
@@ -278,7 +235,6 @@
         <h3 class="font-semibold text-xl text-[var(--brand)]">Move-In / Move-Out</h3>
         <p class="mt-2 text-gray-600">Perfect for relocations — leave it spotless or arrive to a fresh start.</p>
       </div>
-
       <div class="bg-white p-6 rounded shadow">
         <img src="images/office.jpg" class="w-full h-40 object-cover rounded mb-4"
              alt="Clean commercial office space maintained by WonderWoman Cleaning NJ"
@@ -286,10 +242,10 @@
         <h3 class="font-semibold text-xl text-[var(--brand)]">Office &amp; Commercial</h3>
         <p class="mt-2 text-gray-600">Small businesses, offices &amp; commercial spaces in Hunterdon and surrounding counties.</p>
       </div>
-
     </div>
   </div>
 </section>
+
 <div class="slogan-band py-8 fade-in" aria-label="Our slogan: A Clean Home, A Clean Life">
   <div class="flex items-center justify-center gap-4 px-6 max-w-xl mx-auto">
     <span class="flex-1 h-px bg-[var(--brand)] opacity-50"></span>
@@ -301,6 +257,7 @@
   </div>
 </div>
 
+<!-- PRICING -->
 <section id="pricing" class="py-16 bg-white">
   <div class="max-w-6xl mx-auto px-6 fade-in">
     <div class="text-center mb-12">
@@ -311,8 +268,6 @@
       <div class="w-16 h-1 bg-[var(--brand)] mx-auto mb-4"></div>
       <p class="text-gray-500 max-w-xl mx-auto">No surprises — just honest, straightforward rates. Minimum commitment of 3 hours. Available 7 days a week.</p>
     </div>
-
-    <!-- Standard Cleaning Card -->
     <div class="price-card p-8 text-center border-[var(--brand)] relative mb-8">
       <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-[var(--brand)] text-white text-xs font-bold px-4 py-1 rounded-full shadow">MOST POPULAR OPTION</div>
       <div class="text-3xl font-extrabold text-gray-800 mb-1">Flat Rate / Per Hour</div>
@@ -323,8 +278,6 @@
         <li>🛏️ <strong>Rooms / Bedrooms:</strong> Furniture dusted &amp; polished, window sills, mirrors, carpets vacuumed, floors swept &amp; mopped, trash emptied, ceiling fans &amp; fixtures dusted, baseboards &amp; cobwebs</li>
       </ul>
     </div>
-
-    <!-- Add-On Services Card -->
     <div class="price-card p-8">
       <h3 class="text-2xl font-bold text-center mb-2">Add-On Services</h3>
       <div class="w-12 h-1 bg-[var(--brand)] mx-auto mb-6"></div>
@@ -358,19 +311,12 @@
       <h2 class="text-3xl font-bold">Our Work</h2>
     </div>
     <div class="w-16 h-1 bg-[var(--brand)] mx-auto mb-8"></div>
-
     <div class="relative">
       <button onclick="scrollGallery(-1)" aria-label="Scroll gallery left"
-        class="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-[var(--brand)] text-white w-10 h-10 rounded-full shadow">
-        ‹
-      </button>
+        class="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-[var(--brand)] text-white w-10 h-10 rounded-full shadow">&#8249;</button>
       <button onclick="scrollGallery(1)" aria-label="Scroll gallery right"
-        class="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-[var(--brand)] text-white w-10 h-10 rounded-full shadow">
-        ›
-      </button>
-      <div id="gallery" class="flex gap-6 overflow-hidden px-12 no-scrollbar" aria-label="Photo gallery of cleaning results">
-        <!-- images injected by JS -->
-      </div>
+        class="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-[var(--brand)] text-white w-10 h-10 rounded-full shadow">&#8250;</button>
+      <div id="gallery" class="flex gap-6 overflow-hidden px-12 no-scrollbar" aria-label="Photo gallery of cleaning results"></div>
     </div>
   </div>
 </section>
@@ -383,11 +329,14 @@
 
     <div class="flex flex-col items-center gap-4">
       <img src="images/slogan.png"
-             alt="A Clean Home, A Clean Life"
-             class="w-60 sm:w-80"
-             width="208" height="52" loading="lazy">
+           alt="A Clean Home, A Clean Life"
+           class="w-60 sm:w-80"
+           width="208" height="52" loading="lazy">
 
-      <img src="images/hero-cleaning.jpg" alt="WonderWoman Cleaning – High Bridge, New Jersey" class="w-28 sm:w-44" width="176" height="176" loading="lazy">
+      <img src="images/hero-cleaning.jpg"
+           alt="WonderWoman Cleaning – High Bridge, New Jersey"
+           class="w-28 sm:w-44" width="176" height="176" loading="lazy">
+
       <div class="font-semibold space-y-2">
         <div class="flex items-center justify-center gap-2 text-lg">
           📞 <a href="tel:+19084378796" class="text-[var(--brand)] hover:underline" itemprop="telephone">908-437-8796</a>
@@ -397,6 +346,18 @@
           ✉️ <a href="mailto:wonderwomanhomecleaningservice@gmail.com" class="text-[var(--brand)] hover:underline" itemprop="email">wonderwomanhomecleaningservice@gmail.com</a>
         </div>
       </div>
+
+      <!-- ── Facebook Link ── -->
+      <a href="https://www.facebook.com/WonderWomancleaningservice/"
+         target="_blank"
+         rel="noopener noreferrer"
+         aria-label="Visit WonderWoman Cleaning on Facebook"
+         class="fb-link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.791-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97h-1.513c-1.491 0-1.956.93-1.956 1.884v2.25h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/>
+        </svg>
+        Follow Us on Facebook
+      </a>
 
       <!-- Trust badges -->
       <div class="flex flex-wrap justify-center gap-3 mt-2">
@@ -415,7 +376,6 @@
 </section>
 
 <footer class="bg-[var(--brand)] text-white py-8 text-center">
-  <!-- Footer address reinforces NAP (Name, Address, Phone) consistency for local SEO -->
   <p class="font-semibold text-lg" itemprop="name">WonderWoman Cleaning</p>
   <p class="text-sm mt-1" itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
     <span itemprop="addressLocality">High Bridge</span>,
@@ -423,8 +383,19 @@
     Residential &amp; Commercial · Hunterdon, Somerset &amp; Warren Counties
   </p>
   <p class="text-sm mt-1 opacity-90">Fully Insured · Family Owned &amp; Operated</p>
-
-  <p class="text-sm mt-1">&copy; 2026 WonderWoman Cleaning</p>
+  <p class="mt-3">
+    <a href="https://www.facebook.com/WonderWomancleaningservice/"
+       target="_blank"
+       rel="noopener noreferrer"
+       aria-label="WonderWoman Cleaning on Facebook"
+       class="inline-flex items-center gap-2 text-white opacity-90 hover:opacity-100 text-sm font-medium transition">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="16" height="16" aria-hidden="true">
+        <path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.791-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97h-1.513c-1.491 0-1.956.93-1.956 1.884v2.25h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/>
+      </svg>
+      facebook.com/WonderWomancleaningservice
+    </a>
+  </p>
+  <p class="text-sm mt-2">&copy; 2026 WonderWoman Cleaning</p>
 </footer>
 
 <!-- LIGHTBOX -->
@@ -432,15 +403,12 @@
   <img src="" alt="Enlarged cleaning result photo">
 </div>
 
-<!-- JS -->
 <script>
-  // Fade-in observer
   const observer = new IntersectionObserver(entries => {
     entries.forEach(e => e.isIntersecting && e.target.classList.add('show'));
   });
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-  // ===== INFINITE SEAMLESS GALLERY =====
   const gallery = document.getElementById('gallery');
   const images = [
     { src: 'images/clean1.jpg', alt: 'Clean kitchen after WonderWoman Cleaning visit' },
@@ -493,7 +461,6 @@
     requestAnimationFrame(animate);
   }
 
-  // Lightbox
   const lightbox    = document.getElementById('lightbox');
   const lightboxImg = lightbox.querySelector('img');
   document.addEventListener('click', e => {
